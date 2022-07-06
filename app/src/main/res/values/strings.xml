@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Koin Balance</string>
+    <string name="default_name">User</string>
+    <string name="default_currency">BRL</string>
+</resources>
