@@ -3,8 +3,11 @@
     <string name="default_name">User</string>
     <string name="default_currency">USD</string>
     <string name="greet">Hello %s</string>
-    <string name="your_balance_is">Your balance is</string>
+    <string name="your_balance_is">Your balance is:</string>
     <string name="balance">%s %s</string>
     <string name="transaction_value">%s</string>
     <string name="transaction_date">%s</string>
+
+    <string name="configuration">Configuration</string>
+    <string name="add_transaction">Add Transaction</string>
 </resources>

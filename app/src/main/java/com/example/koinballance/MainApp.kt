@@ -9,6 +9,7 @@ import org.koin.core.context.startKoin
 class MainApp: Application() {
 
     override fun onCreate() {
+
         super.onCreate()
         startKoin {
             androidLogger()

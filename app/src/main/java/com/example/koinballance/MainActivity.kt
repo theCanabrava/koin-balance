@@ -15,10 +15,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.display.text = userSettings.getSettings().name
+        binding.greet.text = userSettings.getSettings().name
+        binding.configuration.setOnClickListener {
+            binding.greet.text = "Ouch!"
+        }
 
     }
 }
