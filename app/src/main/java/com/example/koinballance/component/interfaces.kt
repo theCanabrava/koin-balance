@@ -6,6 +6,7 @@ interface TransactionList
 {
     fun add(value: Double, date: Date)
     fun remove(transaction: Transaction)
+    fun getSum(): Double
     fun get(): Array<Transaction>
     fun get(filter: TransactionFilter): Array<Transaction>
 }

@@ -36,4 +36,10 @@ class SimpleTransactionList (private val transactionList: ArrayList<Transaction>
         return date.get(Calendar.MONTH) == filter.month && date.get(Calendar.YEAR) == filter.year
     }
 
+    override fun getSum(): Double {
+        var total = 0.0
+        transactionList.forEach { total += it.value }
+        return total
+    }
+
 }
