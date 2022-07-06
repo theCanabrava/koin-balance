@@ -3,7 +3,7 @@
 
     <style name="header_small">
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/design_default_color_on_primary</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -20,6 +20,20 @@
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/design_default_color_on_primary</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="card_title">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/secondary_text_light</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="card_section">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/secondary_text_light</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
 </resources>
