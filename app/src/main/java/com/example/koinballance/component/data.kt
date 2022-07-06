@@ -6,7 +6,7 @@ class Transaction constructor(
     val id: UUID,
     val created: Date,
     val transactionDate: Date,
-    val value: Int
+    val value: Double
 )
 
 class TransactionFilter constructor(

@@ -4,7 +4,7 @@ import java.util.*
 
 interface TransactionList
 {
-    fun add(value: Int, date: Date)
+    fun add(value: Double, date: Date)
     fun remove(transaction: Transaction)
     fun get(): Array<Transaction>
     fun get(filter: TransactionFilter): Array<Transaction>

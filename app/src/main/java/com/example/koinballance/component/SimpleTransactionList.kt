@@ -6,7 +6,7 @@ import kotlin.collections.ArrayList
 
 class SimpleTransactionList (private val transactionList: ArrayList<Transaction>): TransactionList{
 
-    override fun add(value: Int, date: Date) {
+    override fun add(value: Double, date: Date) {
         val transaction = Transaction(
             UUID.randomUUID(),
             Date(),
