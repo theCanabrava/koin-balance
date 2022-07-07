@@ -45,4 +45,12 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <!-- Add transaction Strings -->
+    <style name="currency_text">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>

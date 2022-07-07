@@ -33,4 +33,15 @@
         <item>JPY</item>
         <item>USD</item>
     </string-array>
+
+    <!-- Add Transaction Strings -->
+    <string name="value_field">Value:</string>
+    <string name="value_hint">Transaction Value</string>
+    <string name="date_field">Date:</string>
+    <string name="select_sign">Select sign</string>
+    <string name="confirm_transaction">Confirm Transaction</string>
+    <string-array name="transaction_sign">
+        <item>+</item>
+        <item>-</item>
+    </string-array>
 </resources>
