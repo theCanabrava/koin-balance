@@ -3,8 +3,6 @@ package com.example.koinballance.main
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.koinballance.R
 import com.example.koinballance.component.Transaction
@@ -12,7 +10,6 @@ import com.example.koinballance.component.TransactionList
 import com.example.koinballance.component.UserSettings
 import com.example.koinballance.databinding.ActivityMainBinding
 import org.koin.android.ext.android.inject
-import java.text.NumberFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
