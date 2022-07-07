@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddTransactionActivity">
+    tools:context=".addtransaction.AddTransactionActivity">
 
     <TextView
         android:id="@+id/textView4"
@@ -18,8 +18,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="96dp"
+        android:id="@+id/transactionSign"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:contentDescription="@string/select_sign"
         app:layout_constraintStart_toStartOf="@+id/textView4"
@@ -31,10 +31,10 @@
         android:layout_height="48dp"
         android:gravity="center"
         android:text="@string/default_currency"
-        android:textAlignment="viewStart"
+        android:textAlignment="center"
         android:textAppearance="@style/currency_text"
-        app:layout_constraintStart_toEndOf="@+id/spinner"
-        app:layout_constraintTop_toTopOf="@+id/spinner" />
+        app:layout_constraintStart_toEndOf="@+id/transactionSign"
+        app:layout_constraintTop_toTopOf="@+id/transactionSign" />
 
     <EditText
         android:id="@+id/transactionValue"
@@ -58,8 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="@string/date_field"
-        app:layout_constraintStart_toStartOf="@+id/spinner"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintStart_toStartOf="@+id/transactionSign"
+        app:layout_constraintTop_toBottomOf="@+id/transactionSign" />
 
     <DatePicker
         android:id="@+id/datePicker"

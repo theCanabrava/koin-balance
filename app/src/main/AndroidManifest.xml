@@ -15,7 +15,7 @@
         android:theme="@style/Theme.KoinBallance"
         tools:targetApi="31">
         <activity
-            android:name=".AddTransactionActivity"
+            android:name=".addtransaction.AddTransactionActivity"
             android:exported="false"
             android:parentActivityName=".main.MainActivity"/>
         <activity
