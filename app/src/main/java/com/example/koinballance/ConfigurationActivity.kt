@@ -19,22 +19,8 @@ class ConfigurationActivity : AppCompatActivity() {
 
         supportActionBar!!.title = getString(R.string.configuration)
         bindSpinner()
+        addClickListener()
         getDataFromSettings()
-
-        binding.confirmChanges.setOnClickListener {
-            userSettings.changeName(binding.usernameField.text.toString())
-            val currencyCode = binding.currencyDropdown.selectedItem as String
-            userSettings.changeCurrency(Currency.getInstance(currencyCode))
-        }
-        binding.resetChanges.setOnClickListener { getDataFromSettings() }
-    }
-
-    private fun getDataFromSettings()
-    {
-        binding.usernameField.setText(userSettings.getSettings().name)
-        val position = resources.getStringArray(R.array.currencies)
-            .indexOf(userSettings.getSettings().currency.currencyCode)
-        binding.currencyDropdown.setSelection(position)
     }
 
     private fun bindSpinner()
@@ -47,6 +33,25 @@ class ConfigurationActivity : AppCompatActivity() {
             it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.currencyDropdown.adapter = it
         }
+    }
 
+    private fun addClickListener()
+    {
+
+        binding.confirmChanges.setOnClickListener {
+            userSettings.changeName(binding.usernameField.text.toString())
+            val currencyCode = binding.currencyDropdown.selectedItem as String
+            userSettings.changeCurrency(Currency.getInstance(currencyCode))
+            finish()
+        }
+        binding.resetChanges.setOnClickListener { getDataFromSettings() }
+    }
+
+    private fun getDataFromSettings()
+    {
+        binding.usernameField.setText(userSettings.settingsData.value!!.name)
+        val position = resources.getStringArray(R.array.currencies)
+            .indexOf(userSettings.settingsData.value!!.currency.currencyCode)
+        binding.currencyDropdown.setSelection(position)
     }
 }

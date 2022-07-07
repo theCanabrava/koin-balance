@@ -32,14 +32,14 @@ class MainActivity : AppCompatActivity() {
 
         bindTransactions()
         bindNavigation()
-        updateHeader()
+        userSettings.settingsData.observe(this) { updateHeader() }
     }
 
     private fun bindTransactions()
     {
-        val transactions = transactionList.transactions.value as Array<Transaction>
+        val transactions = transactionList.transactions.value!!
         binding.transactions.layoutManager = LinearLayoutManager(this)
-        binding.transactions.adapter = TransactionAdapter(transactions) {
+        binding.transactions.adapter = TransactionAdapter(this, transactions) {
             transactionList.add(it.value, Date())
         }
 
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateHeader()
     {
-        binding.greet.text = getString(R.string.greet, userSettings.getSettings().name)
+        binding.greet.text = getString(R.string.greet, userSettings.settingsData.value!!.name)
         val balance = userSettings.formatCurrency(transactionList.getSum())
         binding.balance.text = getString(R.string.balance, balance)
     }

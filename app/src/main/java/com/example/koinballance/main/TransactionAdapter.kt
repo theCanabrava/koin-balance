@@ -1,8 +1,10 @@
 package com.example.koinballance.main
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koinballance.R
 import com.example.koinballance.component.Transaction
@@ -11,7 +13,8 @@ import com.example.koinballance.databinding.TransactionCardBinding
 import org.koin.java.KoinJavaComponent.inject
 import java.text.SimpleDateFormat
 
-class TransactionAdapter(var transactions: Array<Transaction>,
+class TransactionAdapter(private val owner: LifecycleOwner,
+                         var transactions: Array<Transaction>,
                          private val clickListener: ((Transaction)->Unit)):
     RecyclerView.Adapter<TransactionAdapter.CardViewHolder>()
 {
@@ -23,7 +26,8 @@ class TransactionAdapter(var transactions: Array<Transaction>,
         val binding: TransactionCardBinding = TransactionCardBinding.bind(itemView)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder
+    {
         val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.transaction_card, parent, false)
@@ -31,15 +35,19 @@ class TransactionAdapter(var transactions: Array<Transaction>,
         return CardViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CardViewHolder, position: Int)
+    {
+        userSettings.settingsData.observe(owner) { updateTransaction(holder, position) }
+    }
+
+    override fun getItemCount(): Int = transactions.size
+
+    fun updateTransaction(holder: CardViewHolder, position: Int)
+    {
         holder.binding.value.text = userSettings.formatCurrency(transactions[position].value)
         holder.binding.date.text = SimpleDateFormat("dd/MM/yy")
             .format(transactions[position].transactionDate)
         holder.binding.card.setOnClickListener { clickListener(transactions[position]) }
     }
-
-    override fun getItemCount(): Int = transactions.size
-
-
 
 }

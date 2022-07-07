@@ -14,9 +14,9 @@ interface TransactionList
 
 interface UserSettings
 {
+    val settingsData: MutableLiveData<Settings>
     fun changeName(name: String)
     fun changeCurrency(currency: Currency)
-    fun getSettings(): Settings
     fun formatCurrency(value: Double): String
 }
 
