@@ -18,6 +18,7 @@
     <!-- Configuration Strings -->
     <string name="username_field">User name:</string>
     <string name="currency_field">Currency:</string>
+    <string name="currencies_dropdown">Currencies Dropdown</string>
     <string name="confirm_changes">Confirm Changes</string>
     <string name="reset_changes">Reset Changes</string>
     <string-array name="currencies">

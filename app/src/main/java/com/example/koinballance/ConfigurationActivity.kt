@@ -7,5 +7,7 @@ class ConfigurationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_configuration)
+
+        supportActionBar!!.title = getString(R.string.configuration)
     }
 }
