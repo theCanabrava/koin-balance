@@ -1,8 +1,11 @@
-package com.example.koinballance
+package com.example.koinballance.main
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.koinballance.R
+import com.example.koinballance.component.Transaction
 import com.example.koinballance.component.TransactionList
 import com.example.koinballance.component.UserSettings
 import com.example.koinballance.databinding.ActivityMainBinding
@@ -26,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         transactionList.add(9.0, Date())
         transactionList.add(-8.0, Date())
         transactionList.add(7.51, Date())
+        binding.transactions.layoutManager = LinearLayoutManager(this)
+        binding.transactions.adapter = TransactionAdapter(transactionList.get(), this)
 
         bindNavigation()
         updateHeader()
@@ -41,12 +46,8 @@ class MainActivity : AppCompatActivity() {
     private fun updateHeader()
     {
         binding.greet.text = getString(R.string.greet, userSettings.getSettings().name)
-
-        val format: NumberFormat = NumberFormat.getCurrencyInstance()
-        format.maximumFractionDigits = 2
-        format.currency = userSettings.getSettings().currency
-        val balance = format.format(transactionList.getSum())
+        val balance = userSettings.formatCurrency(transactionList.getSum())
         binding.balance.text = getString(R.string.balance, balance)
-
     }
+
 }

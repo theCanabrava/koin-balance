@@ -16,5 +16,6 @@ interface UserSettings
     fun changeName(name: String)
     fun changeCurrency(currency: Currency)
     fun getSettings(): Settings
+    fun formatCurrency(value: Double): String
 }
 
