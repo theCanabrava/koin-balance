@@ -66,4 +66,27 @@
         <item name="android:textColor">@android:color/primary_text_light</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <!-- Monitor String -->
+    <style name="monitor_label_weak">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray_text</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="monitor_value_weak">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/gray_text</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="monitor_value">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
 </resources>

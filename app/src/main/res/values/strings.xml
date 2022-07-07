@@ -52,4 +52,9 @@
     <string name="confirm_amount">%s?</string>
     <string name="confirm_yes">Confirm Transaction</string>
     <string name="confirm_no">Go Back</string>
+
+    <!-- Monitor Transaction Strings -->
+    <string name="monitor">Transaction</string>
+    <string name="created_at">Created at:</string>
+    <string name="edit">Edit Transaction</string>-
 </resources>
