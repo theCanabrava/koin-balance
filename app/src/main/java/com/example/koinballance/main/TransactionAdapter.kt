@@ -42,7 +42,7 @@ class TransactionAdapter(private val owner: LifecycleOwner,
 
     override fun getItemCount(): Int = transactions.size
 
-    fun updateTransaction(holder: CardViewHolder, position: Int)
+    private fun updateTransaction(holder: CardViewHolder, position: Int)
     {
         holder.binding.value.text = userSettings.formatCurrency(transactions[position].value)
         holder.binding.date.text = SimpleDateFormat("dd/MM/yy")

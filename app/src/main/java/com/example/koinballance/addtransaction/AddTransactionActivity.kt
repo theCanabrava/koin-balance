@@ -1,13 +1,15 @@
 package com.example.koinballance.addtransaction
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import com.example.koinballance.R
 import com.example.koinballance.component.TransactionList
 import com.example.koinballance.component.UserSettings
 import com.example.koinballance.databinding.ActivityAddTransactionBinding
 import org.koin.android.ext.android.inject
+import java.util.*
 
 class AddTransactionActivity : AppCompatActivity() {
 
@@ -21,7 +23,12 @@ class AddTransactionActivity : AppCompatActivity() {
 
         binding = ActivityAddTransactionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setContent()
+        setListeners()
+    }
 
+    private fun setContent()
+    {
         bindSpinner()
         binding.currencyPrefix.text = userSettings.settingsData.value!!.currency.symbol
         binding.transactionValue.filters = arrayOf(DecimalDigitsInputFilter())
@@ -36,6 +43,27 @@ class AddTransactionActivity : AppCompatActivity() {
         ).also {
             it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.transactionSign.adapter = it
+        }
+    }
+
+    private fun setListeners()
+    {
+        binding.confirmTransaction.setOnClickListener {
+            val value = if(binding.transactionSign.selectedItem == getString(R.string.minus_sign))
+                -(binding.transactionValue.text.toString().toDouble()) else
+                binding.transactionValue.text.toString().toDouble()
+
+            val cal = Calendar.getInstance()
+            cal[Calendar.YEAR] = binding.datePicker.year
+            cal[Calendar.MONTH] = binding.datePicker.month
+            cal[Calendar.DAY_OF_MONTH] = binding.datePicker.dayOfMonth
+
+            transactionList.add(value, cal.time)
+            finish()
+        }
+        binding.transactionValue.addTextChangedListener {
+            binding.confirmTransaction.isEnabled = it.toString().isNotEmpty() &&
+                                                    it.toString() != "."
         }
     }
 }

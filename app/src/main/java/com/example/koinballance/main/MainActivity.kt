@@ -25,11 +25,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        transactionList.add(10.0, Date())
-        transactionList.add(9.0, Date())
-        transactionList.add(-8.0, Date())
-        transactionList.add(7.51, Date())
-
         bindTransactions()
         bindNavigation()
         userSettings.settingsData.observe(this) { updateHeader() }

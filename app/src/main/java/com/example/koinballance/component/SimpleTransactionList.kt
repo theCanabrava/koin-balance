@@ -8,7 +8,7 @@ import kotlin.collections.ArrayList
 class SimpleTransactionList (private val transactionList: ArrayList<Transaction>, ): TransactionList{
 
     override val transactions: MutableLiveData<Array<Transaction>> by lazy {
-        MutableLiveData<Array<Transaction>>()
+        MutableLiveData<Array<Transaction>>(emptyArray())
     }
 
     override fun add(value: Double, date: Date) {
@@ -19,7 +19,7 @@ class SimpleTransactionList (private val transactionList: ArrayList<Transaction>
             value
         )
         transactionList.add(transaction)
-        transactionList.sortBy { it.transactionDate }
+        transactionList.sortByDescending { it.transactionDate }
         transactions.value = transactionList.toTypedArray()
     }
 
