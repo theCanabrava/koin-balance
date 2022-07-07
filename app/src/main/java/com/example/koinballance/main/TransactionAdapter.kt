@@ -1,6 +1,5 @@
 package com.example.koinballance.main
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,13 +10,13 @@ import com.example.koinballance.component.UserSettings
 import com.example.koinballance.databinding.TransactionCardBinding
 import org.koin.java.KoinJavaComponent.inject
 import java.text.SimpleDateFormat
-import java.util.ArrayList
 
-class TransactionAdapter(private val transaction: Array<Transaction>, val context: Context):
+class TransactionAdapter(var transactions: Array<Transaction>,
+                         private val clickListener: ((Transaction)->Unit)):
     RecyclerView.Adapter<TransactionAdapter.CardViewHolder>()
 {
 
-    val userSettings: UserSettings by inject(UserSettings::class.java)
+    private val userSettings: UserSettings by inject(UserSettings::class.java)
 
     class CardViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     {
@@ -33,12 +32,13 @@ class TransactionAdapter(private val transaction: Array<Transaction>, val contex
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        holder.binding.value.text = userSettings.formatCurrency(transaction[position].value)
+        holder.binding.value.text = userSettings.formatCurrency(transactions[position].value)
         holder.binding.date.text = SimpleDateFormat("dd/MM/yy")
-            .format(transaction[position].transactionDate)
+            .format(transactions[position].transactionDate)
+        holder.binding.card.setOnClickListener { clickListener(transactions[position]) }
     }
 
-    override fun getItemCount(): Int = transaction.size
+    override fun getItemCount(): Int = transactions.size
 
 
 

@@ -30,7 +30,11 @@ class MainActivity : AppCompatActivity() {
         transactionList.add(-8.0, Date())
         transactionList.add(7.51, Date())
         binding.transactions.layoutManager = LinearLayoutManager(this)
-        binding.transactions.adapter = TransactionAdapter(transactionList.get(), this)
+        binding.transactions.adapter = TransactionAdapter(transactionList.get()) {
+            transactionList.add(it.value, Date())
+            (binding.transactions.adapter!! as TransactionAdapter).transactions = transactionList.get()
+            binding.transactions.adapter!!.notifyDataSetChanged()
+        }
 
         bindNavigation()
         updateHeader()
