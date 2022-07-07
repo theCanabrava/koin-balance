@@ -20,6 +20,7 @@ class TransactionAdapter(private val owner: LifecycleOwner,
 {
 
     private val userSettings: UserSettings by inject(UserSettings::class.java)
+    private lateinit var dateFormat: String
 
     class CardViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
     {
@@ -31,6 +32,7 @@ class TransactionAdapter(private val owner: LifecycleOwner,
         val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.transaction_card, parent, false)
+        dateFormat = parent.context.getString(R.string.date_format)
 
         return CardViewHolder(view)
     }
@@ -45,7 +47,7 @@ class TransactionAdapter(private val owner: LifecycleOwner,
     private fun updateTransaction(holder: CardViewHolder, position: Int)
     {
         holder.binding.value.text = userSettings.formatCurrency(transactions[position].value)
-        holder.binding.date.text = SimpleDateFormat("dd/MM/yy")
+        holder.binding.date.text = SimpleDateFormat(dateFormat)
             .format(transactions[position].transactionDate)
         holder.binding.card.setOnClickListener { clickListener(transactions[position]) }
     }

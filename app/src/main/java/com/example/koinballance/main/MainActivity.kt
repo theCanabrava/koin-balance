@@ -10,6 +10,7 @@ import com.example.koinballance.R
 import com.example.koinballance.component.TransactionList
 import com.example.koinballance.component.UserSettings
 import com.example.koinballance.databinding.ActivityMainBinding
+import com.example.koinballance.transaction.MonitorTransactionActivity
 import org.koin.android.ext.android.inject
 import java.util.*
 
@@ -35,7 +36,9 @@ class MainActivity : AppCompatActivity() {
         val transactions = transactionList.transactions.value!!
         binding.transactions.layoutManager = LinearLayoutManager(this)
         binding.transactions.adapter = TransactionAdapter(this, transactions) {
-            transactionList.add(it.value, Date())
+            val intent = Intent(this, MonitorTransactionActivity::class.java)
+            intent.putExtra(getString(R.string.transaction), it)
+            startActivity(intent)
         }
 
         transactionList.transactions.observe(this) {

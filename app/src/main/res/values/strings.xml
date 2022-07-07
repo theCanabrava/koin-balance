@@ -14,6 +14,7 @@
     <string name="configuration">Configuration</string>
     <string name="add_transaction">Add Transaction</string>
     <string name="filter_transaction">Filter Transactions</string>
+    <string name="date_format">dd/MM/yyyy</string>
 
     <!-- Configuration Strings -->
     <string name="username_field">User name:</string>
@@ -55,6 +56,7 @@
 
     <!-- Monitor Transaction Strings -->
     <string name="monitor">Transaction</string>
+    <string name="transaction">transaction</string>
     <string name="created_at">Created at:</string>
     <string name="edit">Edit Transaction</string>-
 </resources>

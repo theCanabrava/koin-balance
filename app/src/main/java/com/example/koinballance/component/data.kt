@@ -1,5 +1,6 @@
 package com.example.koinballance.component
 
+import java.io.Serializable
 import java.util.*
 
 class Transaction constructor(
@@ -7,7 +8,7 @@ class Transaction constructor(
     val created: Date,
     val transactionDate: Date,
     val value: Double
-)
+) : Serializable
 
 class TransactionFilter constructor(
     val year: Int,
