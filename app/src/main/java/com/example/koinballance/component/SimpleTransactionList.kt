@@ -24,7 +24,8 @@ class SimpleTransactionList (private val transactionList: ArrayList<Transaction>
     }
 
     override fun remove(transaction: Transaction) {
-        transactionList.remove(transaction)
+        val toRemove = transactionList.find { it.id == transaction.id }
+        transactionList.remove(toRemove)
         transactions.value = transactionList.toTypedArray()
     }
 

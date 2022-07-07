@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import com.example.koinballance.R
 import com.example.koinballance.addtransaction.DecimalDigitsInputFilter
 import com.example.koinballance.component.Transaction
@@ -32,7 +33,7 @@ class EditTransactionActivity : AppCompatActivity()  {
 
         setContent()
         getDataFrom(transaction)
-        //setListeners()
+        setListeners(transaction)
     }
 
     private fun setContent()
@@ -40,6 +41,8 @@ class EditTransactionActivity : AppCompatActivity()  {
         bindSpinner()
         binding.currencyPrefix.text = userSettings.settingsData.value!!.currency.symbol
         binding.transactionValue.filters = arrayOf(DecimalDigitsInputFilter())
+        binding.confirmTransaction.text = getString(R.string.confirm_edit)
+        binding.confirmTransaction.isEnabled = true
     }
 
     private fun getDataFrom(transaction: Transaction)
@@ -67,6 +70,34 @@ class EditTransactionActivity : AppCompatActivity()  {
             it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.transactionSign.adapter = it
         }
+    }
+
+    private fun setListeners(transaction: Transaction)
+    {
+        binding.confirmTransaction.setOnClickListener { edit(transaction) }
+        binding.transactionValue.addTextChangedListener {
+            binding.confirmTransaction.isEnabled = it.toString().isNotEmpty() &&
+                    it.toString() != "."
+        }
+    }
+
+    private fun edit(transaction: Transaction)
+    {
+        val cal = Calendar.getInstance()
+        cal[Calendar.YEAR] = binding.datePicker.year
+        cal[Calendar.MONTH] = binding.datePicker.month
+        cal[Calendar.DAY_OF_MONTH] = binding.datePicker.dayOfMonth
+
+        transactionList.add(getValue(), cal.time)
+        transactionList.remove(transaction)
+        finish()
+    }
+
+    fun getValue(): Double
+    {
+        return if (binding.transactionSign.selectedItem == getString(R.string.minus_sign))
+            -(binding.transactionValue.text.toString().toDouble()) else
+            binding.transactionValue.text.toString().toDouble()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

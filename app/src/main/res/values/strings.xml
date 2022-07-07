@@ -62,4 +62,5 @@
 
     <!-- Edit transaction -->
     <string name="edit_transaction">Edit Transaction</string>
+    <string name="confirm_edit">Confirm Edition</string>
 </resources>
