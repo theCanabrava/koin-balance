@@ -31,8 +31,17 @@ class MainActivity : AppCompatActivity() {
         transactionList.add(9.0, Date())
         transactionList.add(-8.0, Date())
         transactionList.add(7.51, Date())
+
+        bindTransactions()
+        bindNavigation()
+        updateHeader()
+    }
+
+    private fun bindTransactions()
+    {
+        val transactions = transactionList.transactions.value as Array<Transaction>
         binding.transactions.layoutManager = LinearLayoutManager(this)
-        binding.transactions.adapter = TransactionAdapter(transactionList.transactions.value as Array<Transaction>) {
+        binding.transactions.adapter = TransactionAdapter(transactions) {
             transactionList.add(it.value, Date())
         }
 
@@ -41,16 +50,16 @@ class MainActivity : AppCompatActivity() {
             (binding.transactions.adapter!! as TransactionAdapter).transactions = it
             binding.transactions.adapter!!.notifyDataSetChanged()
         }
-
-        bindNavigation()
-        updateHeader()
     }
 
     private fun bindNavigation()
     {
-        binding.configuration.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
-        binding.addTransaction.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
-        binding.filterTransactions.setOnClickListener { startActivity(Intent(this, MainActivity::class.java)) }
+        binding.configuration.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java)) }
+        binding.addTransaction.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java)) }
+        binding.filterTransactions.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java)) }
     }
 
     private fun updateHeader()
