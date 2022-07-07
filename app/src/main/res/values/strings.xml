@@ -2,6 +2,9 @@
     <string name="app_name">Koin Balance</string>
     <string name="default_name">User</string>
     <string name="default_currency">USD</string>
+
+
+    <!-- Main Strings -->
     <string name="greet">Hello %s</string>
     <string name="your_balance_is">Your balance is:</string>
     <string name="balance">%s</string>
@@ -11,4 +14,22 @@
     <string name="configuration">Configuration</string>
     <string name="add_transaction">Add Transaction</string>
     <string name="filter_transaction">Filter Transactions</string>
+
+    <!-- Configuration Strings -->
+    <string name="username_field">User name:</string>
+    <string name="currency_field">Currency:</string>
+    <string name="confirm_changes">Confirm Changes</string>
+    <string name="reset_changes">Reset Changes</string>
+    <string-array name="currencies">
+        <item>ARS</item>
+        <item>AUD</item>
+        <item>BRL</item>
+        <item>CAD</item>
+        <item>CNY</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>INR</item>
+        <item>JPY</item>
+        <item>USD</item>
+    </string-array>
 </resources>
