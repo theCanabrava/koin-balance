@@ -58,5 +58,8 @@
     <string name="monitor">Transaction</string>
     <string name="transaction">transaction</string>
     <string name="created_at">Created at:</string>
-    <string name="edit">Edit Transaction</string>-
+    <string name="edit">Edit Transaction</string>
+
+    <!-- Edit transaction -->
+    <string name="edit_transaction">Edit Transaction</string>
 </resources>

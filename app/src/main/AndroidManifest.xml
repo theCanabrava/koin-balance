@@ -23,6 +23,10 @@
             android:exported="false"
             android:parentActivityName=".main.MainActivity" />
         <activity
+            android:name=".transaction.EditTransactionActivity"
+            android:exported="false"
+            android:parentActivityName=".transaction.MonitorTransactionActivity" />
+        <activity
             android:name=".ConfigurationActivity"
             android:exported="false"
             android:parentActivityName=".main.MainActivity" />

@@ -21,6 +21,7 @@ class AddTransactionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar!!.title = getString(R.string.add_transaction)
 
+
         binding = ActivityAddTransactionBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setContent()

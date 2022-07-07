@@ -1,5 +1,6 @@
 package com.example.koinballance.transaction
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -39,7 +40,9 @@ class MonitorTransactionActivity : AppCompatActivity() {
     private fun bindNavigation(transaction: Transaction)
     {
         binding.edit.setOnClickListener {
-            Log.d("TODO", "should edit transaction ${transaction.id}")
+            val intent = Intent(this, EditTransactionActivity::class.java)
+            intent.putExtra(getString(R.string.transaction), transaction)
+            startActivity(intent)
         }
     }
 }
