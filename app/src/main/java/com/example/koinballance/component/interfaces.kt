@@ -1,14 +1,15 @@
 package com.example.koinballance.component
 
+import androidx.lifecycle.MutableLiveData
 import java.util.*
 
 interface TransactionList
 {
+    val transactions: MutableLiveData<Array<Transaction>>
     fun add(value: Double, date: Date)
     fun remove(transaction: Transaction)
     fun getSum(): Double
-    fun get(): Array<Transaction>
-    fun get(filter: TransactionFilter): Array<Transaction>
+    fun applyFilter(filter: TransactionFilter): Array<Transaction>
 }
 
 interface UserSettings

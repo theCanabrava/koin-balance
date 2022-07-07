@@ -1,10 +1,15 @@
 package com.example.koinballance.component
 
+import androidx.lifecycle.MutableLiveData
 import java.util.*
 import kotlin.collections.ArrayList
 
 
-class SimpleTransactionList (private val transactionList: ArrayList<Transaction>): TransactionList{
+class SimpleTransactionList (private val transactionList: ArrayList<Transaction>, ): TransactionList{
+
+    override val transactions: MutableLiveData<Array<Transaction>> by lazy {
+        MutableLiveData<Array<Transaction>>()
+    }
 
     override fun add(value: Double, date: Date) {
         val transaction = Transaction(
@@ -15,15 +20,15 @@ class SimpleTransactionList (private val transactionList: ArrayList<Transaction>
         )
         transactionList.add(transaction)
         transactionList.sortBy { it.transactionDate }
+        transactions.value = transactionList.toTypedArray()
     }
 
     override fun remove(transaction: Transaction) {
         transactionList.remove(transaction)
+        transactions.value = transactionList.toTypedArray()
     }
 
-    override fun get() = transactionList.toTypedArray()
-
-    override fun get(filter: TransactionFilter): Array<Transaction> {
+    override fun applyFilter(filter: TransactionFilter): Array<Transaction> {
         val validTransaction = transactionList.filter { it -> isInFilter(it.transactionDate, filter) }
         return validTransaction.toTypedArray()
     }

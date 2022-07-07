@@ -3,6 +3,8 @@ package com.example.koinballance.main
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.koinballance.R
 import com.example.koinballance.component.Transaction
@@ -30,9 +32,13 @@ class MainActivity : AppCompatActivity() {
         transactionList.add(-8.0, Date())
         transactionList.add(7.51, Date())
         binding.transactions.layoutManager = LinearLayoutManager(this)
-        binding.transactions.adapter = TransactionAdapter(transactionList.get()) {
+        binding.transactions.adapter = TransactionAdapter(transactionList.transactions.value as Array<Transaction>) {
             transactionList.add(it.value, Date())
-            (binding.transactions.adapter!! as TransactionAdapter).transactions = transactionList.get()
+        }
+
+        transactionList.transactions.observe(this) {
+            updateHeader()
+            (binding.transactions.adapter!! as TransactionAdapter).transactions = it
             binding.transactions.adapter!!.notifyDataSetChanged()
         }
 
