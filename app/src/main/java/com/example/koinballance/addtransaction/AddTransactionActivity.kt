@@ -49,21 +49,33 @@ class AddTransactionActivity : AppCompatActivity() {
     private fun setListeners()
     {
         binding.confirmTransaction.setOnClickListener {
-            val value = if(binding.transactionSign.selectedItem == getString(R.string.minus_sign))
-                -(binding.transactionValue.text.toString().toDouble()) else
-                binding.transactionValue.text.toString().toDouble()
-
-            val cal = Calendar.getInstance()
-            cal[Calendar.YEAR] = binding.datePicker.year
-            cal[Calendar.MONTH] = binding.datePicker.month
-            cal[Calendar.DAY_OF_MONTH] = binding.datePicker.dayOfMonth
-
-            transactionList.add(value, cal.time)
-            finish()
+            val dialog = ConfirmTransactionFragment()
+            val bundle = Bundle()
+            bundle.putDouble(getString(R.string.dialog_value), getValue())
+            dialog.arguments = bundle
+            dialog.show(supportFragmentManager, "DialogFragment")
         }
         binding.transactionValue.addTextChangedListener {
             binding.confirmTransaction.isEnabled = it.toString().isNotEmpty() &&
                                                     it.toString() != "."
         }
+    }
+
+    fun getValue(): Double
+    {
+        return if (binding.transactionSign.selectedItem == getString(R.string.minus_sign))
+                    -(binding.transactionValue.text.toString().toDouble()) else
+                    binding.transactionValue.text.toString().toDouble()
+    }
+
+    fun confirmTransaction(value: Double)
+    {
+        val cal = Calendar.getInstance()
+        cal[Calendar.YEAR] = binding.datePicker.year
+        cal[Calendar.MONTH] = binding.datePicker.month
+        cal[Calendar.DAY_OF_MONTH] = binding.datePicker.dayOfMonth
+
+        transactionList.add(value, cal.time)
+        finish()
     }
 }

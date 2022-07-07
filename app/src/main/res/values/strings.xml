@@ -45,4 +45,11 @@
         <item>+</item>
         <item>-</item>
     </string-array>
+    <string name="dialog_value">value</string>
+    <string name="confirm_dialog">Do you wish to create\nan %s of:</string>
+    <string name="addition">addition</string>
+    <string name="expense">expense</string>
+    <string name="confirm_amount">%s?</string>
+    <string name="confirm_yes">Confirm Transaction</string>
+    <string name="confirm_no">Go Back</string>
 </resources>
