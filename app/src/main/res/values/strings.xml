@@ -14,7 +14,7 @@
     <string name="configuration">Configuration</string>
     <string name="add_transaction">Add Transaction</string>
     <string name="filter_transaction">Filter Transactions</string>
-    <string name="date_format">dd/MM/yyyy</string>
+    <string name="date_format">MM/dd/yyyy</string>
 
     <!-- Filter Transaction Strings -->
     <string name="filter_dialog">Pick a month to filter</string>
@@ -46,12 +46,12 @@
     <string name="date_field">Date:</string>
     <string name="select_sign">Select sign</string>
     <string name="confirm_transaction">Confirm Transaction</string>
-    <string name="minus_sign">-</string>
+    <string name="minus_sign" translatable="false">-</string>
     <string-array name="transaction_sign">
         <item>+</item>
         <item>-</item>
     </string-array>
-    <string name="dialog_value">value</string>
+    <string name="dialog_value" translatable="false">value</string>
     <string name="confirm_dialog">Do you wish to create\nan %s of:</string>
     <string name="addition">addition</string>
     <string name="expense">expense</string>
@@ -61,7 +61,7 @@
 
     <!-- Monitor Transaction Strings -->
     <string name="monitor">Transaction</string>
-    <string name="transaction">transaction</string>
+    <string name="transaction" translatable="false">transaction</string>
     <string name="created_at">Created at:</string>
     <string name="edit">Edit Transaction</string>
     <string name="delete">Delete Transaction</string>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Saldo Koin</string>
+    <string name="default_name">Usuário</string>
+    <string name="default_currency">BRL</string>
+    <string name="greet">Olá %s</string>
+    <string name="your_balance_is">Seu saldo é:</string>
+    <string name="balance">%s</string>
+    <string name="transaction_value">%s</string>
+    <string name="transaction_date">%s</string>
+    <string name="configuration">Configurações</string>
+    <string name="add_transaction">Salvar Transação</string>
+    <string name="filter_transaction">Filtrar Transação</string>
+    <string name="date_format">dd/MM/yyyy</string>
+    <string name="filter_dialog">Selecione um mês para filtrar</string>
+    <string name="apply_filter">Aplicar Filtro</string>
+    <string name="cancel_filter">Cancelar Filtro</string>
+    <string name="username_field">Nome de usuário:</string>
+    <string name="currency_field">Modeda:</string>
+    <string name="currencies_dropdown">Seletor de Moedas</string>
+    <string name="confirm_changes">Confirmar Mudanças</string>
+    <string name="reset_changes">Resetar</string>
+    <string name="value_field">Valor:</string>
+    <string name="value_hint">Valor da transação</string>
+    <string name="date_field">Data:</string>
+    <string name="select_sign">Selecionar sinal</string>
+    <string name="confirm_transaction">Confirmar Transação</string>
+    <string name="confirm_dialog">Você deseja criar\num%s de:</string>
+    <string name="addition">" saldo"</string>
+    <string name="expense">a despesa</string>
+    <string name="confirm_amount">%s?</string>
+    <string name="confirm_yes">Condirmar Transação</string>
+    <string name="confirm_no">Voltar</string>
+    <string name="monitor">Transação</string>
+    <string name="created_at">Criado em:</string>
+    <string name="edit">Editar Transação</string>
+    <string name="delete">Deletar Transação</string>
+    <string name="edit_transaction">Editar Transação</string>
+    <string name="confirm_edit">Confirmar Edição</string>
+    <string name="delete_dialog">Você tem certesa que deseja\ndeletar essa transação de:</string>
+</resources>
