@@ -10,4 +10,9 @@
     <color name="error">#FFB00020</color>
     <color name="gray_text">#FF757575</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- text colors -->
+    <color name="default_on_primary">@color/white</color>
+    <color name="secondary_text">#FF323232</color>
+    <color name="primary_text">@color/black</color>
 </resources>
