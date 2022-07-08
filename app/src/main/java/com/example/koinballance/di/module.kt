@@ -10,10 +10,12 @@ import kotlin.collections.ArrayList
 
 fun generateModule(context: Context): Module
 {
+    val storedData = SharedPrefsData(context)
     val appModule = module {
         single<TransactionList> { SimpleTransactionList(ArrayList<Transaction>()) }
         single<UserSettings> {
             SimpleUserSettings(
+                storedData,
                 Settings(context.getString(R.string.default_name),
                     Currency.getInstance(context.getString(R.string.default_currency)))
             )

@@ -4,7 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import java.text.NumberFormat
 import java.util.*
 
-class SimpleUserSettings (private var settings: Settings): UserSettings {
+class SimpleUserSettings(private val storedData: StoredData, default: Settings) : UserSettings {
+
+    private var settings: Settings = storedData.loadSettings(default)
 
     override val settingsData: MutableLiveData<Settings> by lazy {
         MutableLiveData<Settings>(settings)
@@ -13,11 +15,13 @@ class SimpleUserSettings (private var settings: Settings): UserSettings {
     override fun changeName(name: String) {
         settings = Settings(name, settings.currency)
         settingsData.value = Settings(settings.name, settings.currency)
+        storedData.save(settings)
     }
 
     override fun changeCurrency(currency: Currency) {
         settings = Settings(settings.name, currency)
         settingsData.value = Settings(settings.name, settings.currency)
+        storedData.save(settings)
     }
 
     override fun formatCurrency(value: Double): String
