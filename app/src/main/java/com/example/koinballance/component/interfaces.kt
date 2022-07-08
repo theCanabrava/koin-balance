@@ -11,9 +11,12 @@ interface TransactionList
     fun add(value: Double, date: Date)
     fun remove(transaction: Transaction)
     fun edit(transaction: Transaction, newValue: Double, newDate: Date)
+
     fun getSum(): Double
-    fun applyFilter(filter: TransactionFilter): Array<Transaction>
     fun monitor(transaction: Transaction)
+
+    fun applyFilter(filter: TransactionFilter)
+    fun cancelFilter()
 }
 
 interface UserSettings

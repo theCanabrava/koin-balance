@@ -5,7 +5,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class SimpleTransactionList (private val transactionList: ArrayList<Transaction>, ): TransactionList{
+class SimpleTransactionList (private val transactionList: ArrayList<Transaction>): TransactionList{
 
     override val transactions: MutableLiveData<Array<Transaction>> by lazy {
         MutableLiveData<Array<Transaction>>(emptyArray())
@@ -45,9 +45,13 @@ class SimpleTransactionList (private val transactionList: ArrayList<Transaction>
         monitored.value = insertToListGet(newValue, newDate)
     }
 
-    override fun applyFilter(filter: TransactionFilter): Array<Transaction> {
+    override fun applyFilter(filter: TransactionFilter){
         val validTransaction = transactionList.filter { it -> isInFilter(it.transactionDate, filter) }
-        return validTransaction.toTypedArray()
+        transactions.value = validTransaction.toTypedArray()
+    }
+
+    override fun cancelFilter() {
+        transactions.value = transactionList.toTypedArray()
     }
 
     private fun isInFilter(transactionDate: Date, filter: TransactionFilter): Boolean
