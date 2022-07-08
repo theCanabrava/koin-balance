@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         binding.addTransaction.setOnClickListener {
             startActivity(Intent(this, AddTransactionActivity::class.java)) }
         binding.filterTransactions.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java)) }
+            FilterFragment().show(supportFragmentManager, "Dialog Fragment") }
     }
 
     private fun updateHeader()

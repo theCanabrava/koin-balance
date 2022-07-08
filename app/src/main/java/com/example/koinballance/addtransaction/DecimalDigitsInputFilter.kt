@@ -6,7 +6,7 @@ import java.util.regex.Pattern
 
 class DecimalDigitsInputFilter: InputFilter
 {
-    private val pattern = Pattern.compile("[0-9]*+((\\.[0-9]{0,1})?)||(\\.)?")
+    private val pattern = Pattern.compile("[0-9]*+((\\.[0-9]?)?)||(\\.)?")
     override fun filter(
         source: CharSequence?,
         start: Int,

@@ -16,6 +16,11 @@
     <string name="filter_transaction">Filter Transactions</string>
     <string name="date_format">dd/MM/yyyy</string>
 
+    <!-- Filter Transaction Strings -->
+    <string name="filter_dialog">Pick a month to filter</string>
+    <string name="apply_filter">Apply filter</string>
+    <string name="cancel_filter">Cancel filter</string>
+
     <!-- Configuration Strings -->
     <string name="username_field">User name:</string>
     <string name="currency_field">Currency:</string>
@@ -67,4 +72,5 @@
 
     <!-- Delete Transaction Strings -->
     <string name="delete_dialog">Are you sure you want to\ndelete this transaction of:</string>
+
 </resources>
