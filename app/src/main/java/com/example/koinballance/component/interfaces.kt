@@ -13,6 +13,7 @@ interface TransactionList
     fun edit(transaction: Transaction, newValue: Double, newDate: Date)
 
     fun getSum(): Double
+    fun isFiltering(): Boolean
     fun monitor(transaction: Transaction)
 
     fun applyFilter(filter: TransactionFilter)

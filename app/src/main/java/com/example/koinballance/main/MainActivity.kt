@@ -44,6 +44,9 @@ class MainActivity : AppCompatActivity() {
             updateHeader()
             (binding.transactions.adapter!! as TransactionAdapter).transactions = it
             binding.transactions.adapter!!.notifyDataSetChanged()
+
+            if(transactionList.isFiltering()) setCancelFilterButton()
+            else setFilterButton()
         }
     }
 
@@ -53,8 +56,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ConfigurationActivity::class.java)) }
         binding.addTransaction.setOnClickListener {
             startActivity(Intent(this, AddTransactionActivity::class.java)) }
-        binding.filterTransactions.setOnClickListener {
-            FilterFragment().show(supportFragmentManager, "Dialog Fragment") }
     }
 
     private fun updateHeader()
@@ -62,6 +63,19 @@ class MainActivity : AppCompatActivity() {
         binding.greet.text = getString(R.string.greet, userSettings.settingsData.value!!.name)
         val balance = userSettings.formatCurrency(transactionList.getSum())
         binding.balance.text = getString(R.string.balance, balance)
+    }
+
+    private fun setFilterButton()
+    {
+        binding.filterTransactions.setImageResource(R.drawable.ic_filter)
+        binding.filterTransactions.setOnClickListener {
+            FilterFragment().show(supportFragmentManager, "Dialog Fragment") }
+    }
+
+    private fun setCancelFilterButton()
+    {
+        binding.filterTransactions.setImageResource(R.drawable.ic_cancel_filter)
+        binding.filterTransactions.setOnClickListener { transactionList.cancelFilter() }
     }
 
 }

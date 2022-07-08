@@ -68,6 +68,8 @@ class SimpleTransactionList (private val transactionList: ArrayList<Transaction>
         return total
     }
 
+    override fun isFiltering(): Boolean = transactionList.size != transactions.value!!.size
+
     override fun monitor(transaction: Transaction) {
         monitored.value = transaction
     }
