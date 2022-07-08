@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Main Strings -->
+    <style name="header_small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/design_default_color_on_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="header">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/design_default_color_on_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="header_value">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/design_default_color_on_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="card_title">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/secondary_text_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="card_section">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/secondary_text_dark</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Configuration Strings -->
+    <style name="configuration_label">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/secondary_text_dark</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <!-- Add transaction Strings -->
+    <style name="currency_text">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="dialog_title">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="dialog_content">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Monitor String -->
+    <style name="monitor_label_weak">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray_text</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="monitor_value_weak">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/gray_text</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="monitor_value">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@android:color/primary_text_dark</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+</resources>
