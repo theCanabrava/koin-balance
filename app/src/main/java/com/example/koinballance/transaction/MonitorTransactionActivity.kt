@@ -25,8 +25,10 @@ class MonitorTransactionActivity : AppCompatActivity() {
         binding = ActivityMonitorTransactionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        transactionList.monitored.observe(this) { setText(it) }
-        setListeners()
+        transactionList.monitored.observe(this) {
+            setText(it)
+            setListeners(it)
+        }
 
     }
 
@@ -38,10 +40,15 @@ class MonitorTransactionActivity : AppCompatActivity() {
         binding.monitorValue.text = userSettings.formatCurrency(transaction.value)
     }
 
-    private fun setListeners()
+    private fun setListeners(transaction: Transaction)
     {
         binding.edit.setOnClickListener {
             startActivity(Intent(this, EditTransactionActivity::class.java))
+        }
+
+        binding.delete.setOnClickListener {
+            transactionList.remove(transaction)
+            finish()
         }
     }
 }
