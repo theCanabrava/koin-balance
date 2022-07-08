@@ -3,7 +3,6 @@ package com.example.koinballance.transaction
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.koinballance.R
 import com.example.koinballance.component.Transaction
 import com.example.koinballance.component.TransactionList
@@ -27,8 +26,8 @@ class MonitorTransactionActivity : AppCompatActivity() {
 
         transactionList.monitored.observe(this) {
             setText(it)
-            setListeners(it)
         }
+        setListeners()
 
     }
 
@@ -40,15 +39,20 @@ class MonitorTransactionActivity : AppCompatActivity() {
         binding.monitorValue.text = userSettings.formatCurrency(transaction.value)
     }
 
-    private fun setListeners(transaction: Transaction)
+    private fun setListeners()
     {
         binding.edit.setOnClickListener {
             startActivity(Intent(this, EditTransactionActivity::class.java))
         }
 
         binding.delete.setOnClickListener {
-            transactionList.remove(transaction)
-            finish()
+            DeleteTransactionFragment().show(supportFragmentManager, "DialogFragment")
         }
+    }
+
+    fun confirmRemove(transaction: Transaction)
+    {
+        transactionList.remove(transaction)
+        finish()
     }
 }

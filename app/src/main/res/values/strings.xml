@@ -61,7 +61,10 @@
     <string name="edit">Edit Transaction</string>
     <string name="delete">Delete Transaction</string>
 
-    <!-- Edit transaction -->
+    <!-- Edit Transaction Strings -->
     <string name="edit_transaction">Edit Transaction</string>
     <string name="confirm_edit">Confirm Edition</string>
+
+    <!-- Delete Transaction Strings -->
+    <string name="delete_dialog">Are you sure you want to\ndelete this transaction of:</string>
 </resources>
