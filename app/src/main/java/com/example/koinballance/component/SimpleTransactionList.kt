@@ -5,17 +5,22 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class SimpleTransactionList (private val transactionList: ArrayList<Transaction>): TransactionList{
+class SimpleTransactionList (
+    private val storedData: StoredData,
+    default: ArrayList<Transaction>
+): TransactionList{
+
+    private val transactionList = storedData.loadTransactions(default)
 
     override val transactions: MutableLiveData<Array<Transaction>> by lazy {
-        MutableLiveData<Array<Transaction>>(emptyArray())
+        MutableLiveData<Array<Transaction>>(transactionList.toTypedArray())
     }
 
     override val monitored: MutableLiveData<Transaction> by lazy {
         MutableLiveData<Transaction>()
     }
 
-    override fun add(value: Double, date: Date) { insertToListGet(value, date)}
+    override fun add(value: Double, date: Date) { insertToListGet(value, date) }
 
 
     private fun insertToListGet(value: Double, date: Date): Transaction
@@ -29,6 +34,7 @@ class SimpleTransactionList (private val transactionList: ArrayList<Transaction>
         transactionList.add(transaction)
         transactionList.sortByDescending { it.transactionDate }
         transactions.value = transactionList.toTypedArray()
+        save()
         return transaction
     }
 
@@ -37,6 +43,7 @@ class SimpleTransactionList (private val transactionList: ArrayList<Transaction>
         val toRemove = transactionList.find { it.id == transaction.id }
         transactionList.remove(toRemove)
         transactions.value = transactionList.toTypedArray()
+        save()
     }
 
     override fun edit(transaction: Transaction, newValue: Double, newDate: Date)
@@ -74,4 +81,8 @@ class SimpleTransactionList (private val transactionList: ArrayList<Transaction>
         monitored.value = transaction
     }
 
+    private fun save()
+    {
+        storedData.save(transactionList)
+    }
 }

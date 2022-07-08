@@ -13,7 +13,7 @@ class SharedPrefsData constructor(val context: Context): StoredData
 {
     private val applicationKey = "koin_balance_storage"
     private val transactionKey = "stored_transactions"
-    private val settingsKey = "stored_transactions"
+    private val settingsKey = "stored_settings"
 
     override fun save(transactions: ArrayList<Transaction>)
     {
@@ -21,7 +21,7 @@ class SharedPrefsData constructor(val context: Context): StoredData
         getSharedPreferences()
             .edit()
             .putString(transactionKey, Gson().toJson(transactions))
-            .apply()
+            .commit()
 
     }
 
@@ -31,7 +31,7 @@ class SharedPrefsData constructor(val context: Context): StoredData
         getSharedPreferences()
             .edit()
             .putString(settingsKey, Gson().toJson(settings))
-            .apply()
+            .commit()
 
     }
 

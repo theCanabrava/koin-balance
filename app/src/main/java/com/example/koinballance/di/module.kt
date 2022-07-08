@@ -11,8 +11,9 @@ import kotlin.collections.ArrayList
 fun generateModule(context: Context): Module
 {
     val storedData = SharedPrefsData(context)
+
     val appModule = module {
-        single<TransactionList> { SimpleTransactionList(ArrayList<Transaction>()) }
+        single<TransactionList> { SimpleTransactionList(storedData, ArrayList()) }
         single<UserSettings> {
             SimpleUserSettings(
                 storedData,
