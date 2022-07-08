@@ -18,4 +18,4 @@ class TransactionFilter constructor(
 class Settings constructor(
     val name: String,
     val currency: Currency
-)
+): Serializable

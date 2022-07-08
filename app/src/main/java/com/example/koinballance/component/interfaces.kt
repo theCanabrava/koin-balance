@@ -2,6 +2,15 @@ package com.example.koinballance.component
 
 import androidx.lifecycle.MutableLiveData
 import java.util.*
+import kotlin.collections.ArrayList
+
+interface StoredData
+{
+    fun save(transactions: ArrayList<Transaction>)
+    fun save(settings: Settings)
+    fun loadTransactions(default: ArrayList<Transaction>): ArrayList<Transaction>
+    fun loadSettings(default: Settings): Settings
+}
 
 interface TransactionList
 {

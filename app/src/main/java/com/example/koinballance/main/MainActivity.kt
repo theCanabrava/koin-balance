@@ -12,7 +12,6 @@ import com.example.koinballance.component.UserSettings
 import com.example.koinballance.databinding.ActivityMainBinding
 import com.example.koinballance.transaction.MonitorTransactionActivity
 import org.koin.android.ext.android.inject
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
