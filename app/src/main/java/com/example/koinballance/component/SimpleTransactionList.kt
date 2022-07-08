@@ -11,7 +11,15 @@ class SimpleTransactionList (private val transactionList: ArrayList<Transaction>
         MutableLiveData<Array<Transaction>>(emptyArray())
     }
 
-    override fun add(value: Double, date: Date) {
+    override val monitored: MutableLiveData<Transaction> by lazy {
+        MutableLiveData<Transaction>()
+    }
+
+    override fun add(value: Double, date: Date) { insertToListGet(value, date)}
+
+
+    private fun insertToListGet(value: Double, date: Date): Transaction
+    {
         val transaction = Transaction(
             UUID.randomUUID(),
             Date(),
@@ -21,12 +29,20 @@ class SimpleTransactionList (private val transactionList: ArrayList<Transaction>
         transactionList.add(transaction)
         transactionList.sortByDescending { it.transactionDate }
         transactions.value = transactionList.toTypedArray()
+        return transaction
     }
 
-    override fun remove(transaction: Transaction) {
+    override fun remove(transaction: Transaction)
+    {
         val toRemove = transactionList.find { it.id == transaction.id }
         transactionList.remove(toRemove)
         transactions.value = transactionList.toTypedArray()
+    }
+
+    override fun edit(transaction: Transaction, newValue: Double, newDate: Date)
+    {
+        remove(transaction)
+        monitored.value = insertToListGet(newValue, newDate)
     }
 
     override fun applyFilter(filter: TransactionFilter): Array<Transaction> {
@@ -46,6 +62,10 @@ class SimpleTransactionList (private val transactionList: ArrayList<Transaction>
         var total = 0.0
         transactionList.forEach { total += it.value }
         return total
+    }
+
+    override fun monitor(transaction: Transaction) {
+        monitored.value = transaction
     }
 
 }

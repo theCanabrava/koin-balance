@@ -6,10 +6,14 @@ import java.util.*
 interface TransactionList
 {
     val transactions: MutableLiveData<Array<Transaction>>
+    val monitored: MutableLiveData<Transaction>
+
     fun add(value: Double, date: Date)
     fun remove(transaction: Transaction)
+    fun edit(transaction: Transaction, newValue: Double, newDate: Date)
     fun getSum(): Double
     fun applyFilter(filter: TransactionFilter): Array<Transaction>
+    fun monitor(transaction: Transaction)
 }
 
 interface UserSettings

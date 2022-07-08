@@ -29,11 +29,13 @@ class EditTransactionActivity : AppCompatActivity()  {
         binding = ActivityAddTransactionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val transaction = intent.getSerializableExtra(getString(R.string.transaction)) as Transaction
 
         setContent()
-        getDataFrom(transaction)
-        setListeners(transaction)
+
+        transactionList.monitored.observe(this) {
+            getDataFrom(it)
+            setListeners(it)
+        }
     }
 
     private fun setContent()
@@ -88,8 +90,7 @@ class EditTransactionActivity : AppCompatActivity()  {
         cal[Calendar.MONTH] = binding.datePicker.month
         cal[Calendar.DAY_OF_MONTH] = binding.datePicker.dayOfMonth
 
-        transactionList.add(getValue(), cal.time)
-        transactionList.remove(transaction)
+        transactionList.edit(transaction, getValue(), cal.time)
         finish()
     }
 

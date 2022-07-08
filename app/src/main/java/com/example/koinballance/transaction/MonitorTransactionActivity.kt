@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.koinballance.R
 import com.example.koinballance.component.Transaction
+import com.example.koinballance.component.TransactionList
 import com.example.koinballance.component.UserSettings
 import com.example.koinballance.databinding.ActivityMonitorTransactionBinding
 import org.koin.android.ext.android.inject
@@ -14,6 +15,7 @@ import java.text.SimpleDateFormat
 class MonitorTransactionActivity : AppCompatActivity() {
 
     private val userSettings: UserSettings by inject()
+    private val transactionList: TransactionList by inject()
     lateinit var binding: ActivityMonitorTransactionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +25,8 @@ class MonitorTransactionActivity : AppCompatActivity() {
         binding = ActivityMonitorTransactionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val transaction = intent.getSerializableExtra(getString(R.string.transaction)) as Transaction
-        setText(transaction)
-        bindNavigation(transaction)
+        transactionList.monitored.observe(this) { setText(it) }
+        setListeners()
 
     }
 
@@ -37,12 +38,10 @@ class MonitorTransactionActivity : AppCompatActivity() {
         binding.monitorValue.text = userSettings.formatCurrency(transaction.value)
     }
 
-    private fun bindNavigation(transaction: Transaction)
+    private fun setListeners()
     {
         binding.edit.setOnClickListener {
-            val intent = Intent(this, EditTransactionActivity::class.java)
-            intent.putExtra(getString(R.string.transaction), transaction)
-            startActivity(intent)
+            startActivity(Intent(this, EditTransactionActivity::class.java))
         }
     }
 }

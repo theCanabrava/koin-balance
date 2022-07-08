@@ -36,9 +36,8 @@ class MainActivity : AppCompatActivity() {
         val transactions = transactionList.transactions.value!!
         binding.transactions.layoutManager = LinearLayoutManager(this)
         binding.transactions.adapter = TransactionAdapter(this, transactions) {
-            val intent = Intent(this, MonitorTransactionActivity::class.java)
-            intent.putExtra(getString(R.string.transaction), it)
-            startActivity(intent)
+            transactionList.monitor(it)
+            startActivity(Intent(this, MonitorTransactionActivity::class.java))
         }
 
         transactionList.transactions.observe(this) {
