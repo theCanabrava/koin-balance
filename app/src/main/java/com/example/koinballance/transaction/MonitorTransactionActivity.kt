@@ -9,12 +9,12 @@ import com.example.koinballance.component.TransactionList
 import com.example.koinballance.component.UserSettings
 import com.example.koinballance.databinding.ActivityMonitorTransactionBinding
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 
 class MonitorTransactionActivity : AppCompatActivity() {
 
-    private val userSettings: UserSettings by inject()
-    private val transactionList: TransactionList by inject()
+    private val model: MonitorTransactionViewModel by viewModel()
     lateinit var binding: ActivityMonitorTransactionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,19 +24,16 @@ class MonitorTransactionActivity : AppCompatActivity() {
         binding = ActivityMonitorTransactionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        transactionList.monitored.observe(this) {
-            setText(it)
-        }
+        model.monitorTransaction(this) { setText(it.created, it.date, it.value) }
         setListeners()
 
     }
 
-    private fun setText(transaction: Transaction)
+    private fun setText(created: String, date: String, value: String)
     {
-        val dateFormatter = SimpleDateFormat(getString(R.string.date_format))
-        binding.createdAt.text = dateFormatter.format(transaction.created)
-        binding.monitorDate.text = dateFormatter.format(transaction.transactionDate)
-        binding.monitorValue.text = userSettings.formatCurrency(transaction.value)
+        binding.createdAt.text = created
+        binding.monitorDate.text = date
+        binding.monitorValue.text = value
     }
 
     private fun setListeners()
@@ -52,7 +49,7 @@ class MonitorTransactionActivity : AppCompatActivity() {
 
     fun confirmRemove(transaction: Transaction)
     {
-        transactionList.remove(transaction)
+        model.remove(transaction)
         finish()
     }
 }
