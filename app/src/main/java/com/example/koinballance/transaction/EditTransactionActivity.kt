@@ -8,18 +8,13 @@ import androidx.core.widget.addTextChangedListener
 import com.example.koinballance.R
 import com.example.koinballance.addtransaction.DecimalDigitsInputFilter
 import com.example.koinballance.component.Transaction
-import com.example.koinballance.component.TransactionList
-import com.example.koinballance.component.UserSettings
 import com.example.koinballance.databinding.ActivityAddTransactionBinding
-import org.koin.android.ext.android.inject
-import java.util.*
-import kotlin.math.abs
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class EditTransactionActivity : AppCompatActivity()  {
 
-    private val transactionList: TransactionList by inject()
-    private val userSettings: UserSettings by inject()
+    private val model: EditTransactionViewModel by viewModel()
     private lateinit var binding: ActivityAddTransactionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +27,8 @@ class EditTransactionActivity : AppCompatActivity()  {
 
         setContent()
 
-        transactionList.monitored.observe(this) {
-            getDataFrom(it)
+        model.monitored.observe(this) {
+            getDataFrom(model.getDisplay(it))
             setListeners(it)
         }
     }
@@ -41,25 +36,17 @@ class EditTransactionActivity : AppCompatActivity()  {
     private fun setContent()
     {
         bindSpinner()
-        binding.currencyPrefix.text = userSettings.settingsData.value!!.currency.symbol
+        binding.currencyPrefix.text = model.currencySymbol
         binding.transactionValue.filters = arrayOf(DecimalDigitsInputFilter())
         binding.confirmTransaction.text = getString(R.string.confirm_edit)
         binding.confirmTransaction.isEnabled = true
     }
 
-    private fun getDataFrom(transaction: Transaction)
+    private fun getDataFrom(display: EditTransactionViewModel.EditDisplay)
     {
-        binding.transactionValue.setText(abs(transaction.value).toString())
-        val position = if (transaction.value < 0) 1 else 0
-        binding.transactionSign.setSelection(position)
-
-        val calendar = Calendar.getInstance()
-        calendar.time = transaction.transactionDate
-        binding.datePicker.updateDate(
-            calendar[Calendar.YEAR],
-            calendar[Calendar.MONTH],
-            calendar[Calendar.DAY_OF_MONTH]
-        )
+        binding.transactionValue.setText(display.valueText)
+        binding.transactionSign.setSelection(display.signPosition)
+        binding.datePicker.updateDate(display.year, display.month, display.day )
     }
 
     private fun bindSpinner()
@@ -85,12 +72,7 @@ class EditTransactionActivity : AppCompatActivity()  {
 
     private fun edit(transaction: Transaction)
     {
-        val cal = Calendar.getInstance()
-        cal[Calendar.YEAR] = binding.datePicker.year
-        cal[Calendar.MONTH] = binding.datePicker.month
-        cal[Calendar.DAY_OF_MONTH] = binding.datePicker.dayOfMonth
-
-        transactionList.edit(transaction, getValue(), cal.time)
+        model.edit(transaction, binding.datePicker, getValue())
         finish()
     }
 

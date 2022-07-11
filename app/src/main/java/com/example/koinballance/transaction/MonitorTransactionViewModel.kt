@@ -1,8 +1,6 @@
 package com.example.koinballance.transaction
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModel
 import com.example.koinballance.R
 import com.example.koinballance.component.Transaction
