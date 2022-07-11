@@ -3,9 +3,11 @@ package com.example.koinballance.component
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.example.koinballance.R
+import org.koin.core.annotation.Single
 import java.text.NumberFormat
 import java.util.*
 
+@Single
 class SimpleUserSettings(private val storedData: StoredData, context: Context) : UserSettings {
 
     private var settings: Settings = storedData.loadSettings(

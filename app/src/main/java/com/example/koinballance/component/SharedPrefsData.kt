@@ -5,10 +5,10 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.google.gson.reflect.TypeToken
+import org.koin.core.annotation.Single
 
 
-
-
+@Single
 class SharedPrefsData constructor(val context: Context): StoredData
 {
     private val applicationKey = "koin_balance_storage"

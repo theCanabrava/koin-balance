@@ -1,10 +1,11 @@
 package com.example.koinballance.component
 
 import androidx.lifecycle.MutableLiveData
+import org.koin.core.annotation.Single
 import java.util.*
 import kotlin.collections.ArrayList
 
-
+@Single
 class SimpleTransactionList (private val storedData: StoredData): TransactionList
 {
 

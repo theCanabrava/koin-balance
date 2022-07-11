@@ -5,7 +5,9 @@ import androidx.lifecycle.ViewModel
 import com.example.koinballance.component.Transaction
 import com.example.koinballance.component.TransactionList
 import com.example.koinballance.component.UserSettings
+import org.koin.android.annotation.KoinViewModel
 
+@KoinViewModel
 class MainViewModel(private val list: TransactionList, private val settings: UserSettings): ViewModel()
 {
     val transactions get() = list.transactions
