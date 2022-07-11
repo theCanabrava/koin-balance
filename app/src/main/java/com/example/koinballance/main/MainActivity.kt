@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.koinballance.addtransaction.AddTransactionActivity
-import com.example.koinballance.ConfigurationActivity
+import com.example.koinballance.configuration.ConfigurationActivity
 import com.example.koinballance.R
 import com.example.koinballance.databinding.ActivityMainBinding
 import com.example.koinballance.transaction.MonitorTransactionActivity

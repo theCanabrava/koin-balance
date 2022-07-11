@@ -1,16 +1,15 @@
-package com.example.koinballance
+package com.example.koinballance.configuration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import com.example.koinballance.component.UserSettings
+import com.example.koinballance.R
 import com.example.koinballance.databinding.ActivityConfigurationBinding
-import org.koin.android.ext.android.inject
-import java.util.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ConfigurationActivity : AppCompatActivity() {
 
-    private val userSettings: UserSettings by inject()
+    private val model: ConfigurationViewModel by viewModel()
     private lateinit var binding: ActivityConfigurationBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +38,9 @@ class ConfigurationActivity : AppCompatActivity() {
     {
 
         binding.confirmChanges.setOnClickListener {
-            userSettings.changeName(binding.usernameField.text.toString())
+            val name = binding.usernameField.text.toString()
             val currencyCode = binding.currencyDropdown.selectedItem as String
-            userSettings.changeCurrency(Currency.getInstance(currencyCode))
+            model.changeSettings(name, currencyCode)
             finish()
         }
         binding.resetChanges.setOnClickListener { getDataFromSettings() }
@@ -49,9 +48,9 @@ class ConfigurationActivity : AppCompatActivity() {
 
     private fun getDataFromSettings()
     {
-        binding.usernameField.setText(userSettings.settingsData.value!!.name)
+        binding.usernameField.setText(model.settingsValue.name)
         val position = resources.getStringArray(R.array.currencies)
-            .indexOf(userSettings.settingsData.value!!.currency.currencyCode)
+            .indexOf(model.settingsValue.currency.currencyCode)
         binding.currencyDropdown.setSelection(position)
     }
 }

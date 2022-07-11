@@ -27,7 +27,7 @@
             android:exported="false"
             android:parentActivityName=".transaction.MonitorTransactionActivity" />
         <activity
-            android:name=".ConfigurationActivity"
+            android:name=".configuration.ConfigurationActivity"
             android:exported="false"
             android:parentActivityName=".main.MainActivity" />
         <activity
