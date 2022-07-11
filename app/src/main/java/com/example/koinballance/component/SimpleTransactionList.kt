@@ -5,12 +5,10 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class SimpleTransactionList (
-    private val storedData: StoredData,
-    default: ArrayList<Transaction>
-): TransactionList{
+class SimpleTransactionList (private val storedData: StoredData): TransactionList
+{
 
-    private val transactionList = storedData.loadTransactions(default)
+    private val transactionList = storedData.loadTransactions(ArrayList())
 
     override val transactions: MutableLiveData<Array<Transaction>> by lazy {
         MutableLiveData<Array<Transaction>>(transactionList.toTypedArray())

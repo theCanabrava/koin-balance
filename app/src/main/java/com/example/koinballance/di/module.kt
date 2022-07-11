@@ -1,27 +1,11 @@
 package com.example.koinballance.di
 
-import android.content.Context
-import com.example.koinballance.R
 import com.example.koinballance.component.*
-import org.koin.core.module.Module
 import org.koin.dsl.module
-import java.util.*
-import kotlin.collections.ArrayList
 
-fun generateModule(context: Context): Module
-{
-    val storedData = SharedPrefsData(context)
 
-    val appModule = module {
-        single<TransactionList> { SimpleTransactionList(storedData, ArrayList()) }
-        single<UserSettings> {
-            SimpleUserSettings(
-                storedData,
-                Settings(context.getString(R.string.default_name),
-                    Currency.getInstance(context.getString(R.string.default_currency)))
-            )
-        }
-    }
-
-    return appModule
+val appModule = module {
+    single <StoredData>{ SharedPrefsData(get()) }
+    single <TransactionList>{ SimpleTransactionList(get()) }
+    single <UserSettings>{ SimpleUserSettings(get(), get()) }
 }

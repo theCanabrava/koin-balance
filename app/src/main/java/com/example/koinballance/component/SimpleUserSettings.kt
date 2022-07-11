@@ -1,12 +1,19 @@
 package com.example.koinballance.component
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import com.example.koinballance.R
 import java.text.NumberFormat
 import java.util.*
 
-class SimpleUserSettings(private val storedData: StoredData, default: Settings) : UserSettings {
+class SimpleUserSettings(private val storedData: StoredData, context: Context) : UserSettings {
 
-    private var settings: Settings = storedData.loadSettings(default)
+    private var settings: Settings = storedData.loadSettings(
+        Settings(
+            context.resources.getString(R.string.default_name),
+            Currency.getInstance(context.resources.getString(R.string.default_currency)
+            ))
+    )
 
     override val settingsData: MutableLiveData<Settings> by lazy {
         MutableLiveData<Settings>(settings)
