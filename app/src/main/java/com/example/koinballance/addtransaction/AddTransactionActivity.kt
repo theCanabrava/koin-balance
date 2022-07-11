@@ -9,18 +9,17 @@ import com.example.koinballance.component.TransactionList
 import com.example.koinballance.component.UserSettings
 import com.example.koinballance.databinding.ActivityAddTransactionBinding
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 class AddTransactionActivity : AppCompatActivity() {
 
-    private val transactionList: TransactionList by inject()
-    private val userSettings: UserSettings by inject()
+    private val model: AddTransactionViewModel by viewModel()
     private lateinit var binding: ActivityAddTransactionBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.title = getString(R.string.add_transaction)
-
 
         binding = ActivityAddTransactionBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -31,7 +30,7 @@ class AddTransactionActivity : AppCompatActivity() {
     private fun setContent()
     {
         bindSpinner()
-        binding.currencyPrefix.text = userSettings.settingsData.value!!.currency.symbol
+        binding.currencyPrefix.text = model.currencySymbol
         binding.transactionValue.filters = arrayOf(DecimalDigitsInputFilter())
     }
 
@@ -76,7 +75,7 @@ class AddTransactionActivity : AppCompatActivity() {
         cal[Calendar.MONTH] = binding.datePicker.month
         cal[Calendar.DAY_OF_MONTH] = binding.datePicker.dayOfMonth
 
-        transactionList.add(value, cal.time)
+        model.addTransaction(value, cal.time)
         finish()
     }
 }
