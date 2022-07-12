@@ -9,6 +9,8 @@ import com.example.koinballance.configuration.ConfigurationActivity
 import com.example.koinballance.R
 import com.example.koinballance.databinding.ActivityMainBinding
 import com.example.koinballance.transaction.MonitorTransactionActivity
+import org.koin.android.ext.android.inject
+import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -65,7 +67,8 @@ class MainActivity : AppCompatActivity() {
     {
         binding.filterTransactions.setImageResource(R.drawable.ic_filter)
         binding.filterTransactions.setOnClickListener {
-            FilterFragment().show(supportFragmentManager, "Dialog Fragment") }
+            val fragment: FilterFragment by inject()
+            fragment.show(supportFragmentManager, "Dialog Fragment") }
     }
 
     private fun setCancelFilterButton()

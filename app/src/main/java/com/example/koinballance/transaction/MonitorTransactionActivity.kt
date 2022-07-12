@@ -43,7 +43,8 @@ class MonitorTransactionActivity : AppCompatActivity() {
         }
 
         binding.delete.setOnClickListener {
-            DeleteTransactionFragment().show(supportFragmentManager, "DialogFragment")
+            val fragment: DeleteTransactionFragment by inject()
+            fragment.show(supportFragmentManager, "DialogFragment")
         }
     }
 

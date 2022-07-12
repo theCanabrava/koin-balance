@@ -20,7 +20,6 @@ class AddTransactionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupKoinFragmentFactory()
         supportActionBar!!.title = getString(R.string.add_transaction)
 
         binding = ActivityAddTransactionBinding.inflate(layoutInflater)

@@ -15,11 +15,9 @@ import org.koin.android.ext.android.inject
 import org.koin.java.KoinJavaComponent
 import java.util.*
 
-class FilterFragment : DialogFragment() {
+class FilterFragment(val transactionList: TransactionList) : DialogFragment() {
 
     private lateinit var binding: FragmentFilterBinding
-    private val transactionList: TransactionList
-            by KoinJavaComponent.inject(TransactionList::class.java)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
