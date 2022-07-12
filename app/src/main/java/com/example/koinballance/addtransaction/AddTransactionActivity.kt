@@ -9,6 +9,7 @@ import com.example.koinballance.component.TransactionList
 import com.example.koinballance.component.UserSettings
 import com.example.koinballance.databinding.ActivityAddTransactionBinding
 import org.koin.android.ext.android.inject
+import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -19,6 +20,7 @@ class AddTransactionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupKoinFragmentFactory()
         supportActionBar!!.title = getString(R.string.add_transaction)
 
         binding = ActivityAddTransactionBinding.inflate(layoutInflater)
@@ -49,7 +51,7 @@ class AddTransactionActivity : AppCompatActivity() {
     private fun setListeners()
     {
         binding.confirmTransaction.setOnClickListener {
-            val dialog = ConfirmTransactionFragment()
+            val dialog: ConfirmTransactionFragment by inject()
             val bundle = Bundle()
             bundle.putDouble(getString(R.string.dialog_value), getValue())
             dialog.arguments = bundle

@@ -10,9 +10,8 @@ import com.example.koinballance.component.UserSettings
 import com.example.koinballance.databinding.FragmentConfirmTransactionBinding
 import org.koin.java.KoinJavaComponent
 
-class ConfirmTransactionFragment : DialogFragment() {
+class ConfirmTransactionFragment(val userSettings: UserSettings) : DialogFragment() {
 
-    private val userSettings: UserSettings by KoinJavaComponent.inject(UserSettings::class.java)
     private lateinit var binding: FragmentConfirmTransactionBinding
 
     override fun onCreateView(
