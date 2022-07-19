@@ -10,7 +10,6 @@ import com.example.koinballance.R
 import com.example.koinballance.databinding.ActivityMainBinding
 import com.example.koinballance.transaction.MonitorTransactionActivity
 import org.koin.android.ext.android.inject
-import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
