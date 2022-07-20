@@ -6,7 +6,6 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.espresso.assertion.ViewAssertions.*
 import androidx.test.espresso.action.ViewActions.*
 import com.example.koinballance.R
-import com.example.koinballance.configuration.ConfigurationActivity
 import com.example.koinballance.configuration.ConfigurationViewModel
 import com.example.koinballance.main.MainActivity
 import org.junit.Test
