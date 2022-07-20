@@ -66,4 +66,14 @@ class MainActivityInstrumentedTest:KoinTest
         }
     }
 
+    @Test
+    fun opensTransaction()
+    {
+        val cellText = "R$10.00"
+        launchActivity<MainActivity>().use {
+            onView(withText(cellText)).perform(click())
+            onView(withId(R.id.createdAt)).check(matches(isDisplayed()))
+        }
+    }
+
 }
