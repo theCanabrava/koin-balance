@@ -76,4 +76,25 @@ class MainActivityInstrumentedTest:KoinTest
         }
     }
 
+    @Test
+    fun filtersTransactions()
+    {
+        launchActivity<MainActivity>().use {
+            onView(withId(R.id.filterTransactions)).perform(click())
+            onView(withId(R.id.applyFilter)).perform(click())
+            assert(model.filtering)
+        }
+    }
+
+    @Test
+    fun cancelsFilter()
+    {
+        launchActivity<MainActivity>().use {
+            onView(withId(R.id.filterTransactions)).perform(click())
+            onView(withId(R.id.applyFilter)).perform(click())
+            onView(withId(R.id.filterTransactions)).perform(click())
+            assert(!model.filtering)
+        }
+    }
+
 }
