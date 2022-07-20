@@ -6,14 +6,11 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.espresso.assertion.ViewAssertions.*
 import androidx.test.espresso.action.ViewActions.*
 import com.example.koinballance.R
-import com.example.koinballance.configuration.ConfigurationViewModel
 import com.example.koinballance.main.MainActivity
 import org.junit.Test
 import org.koin.test.KoinTest
 import org.koin.test.inject
-import kotlin.test.assertEquals
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import com.example.koinballance.addtransaction.AddTransactionActivity
 import com.example.koinballance.component.TransactionList
 import com.example.koinballance.component.UserSettings
 import com.example.koinballance.transaction.MonitorTransactionActivity
