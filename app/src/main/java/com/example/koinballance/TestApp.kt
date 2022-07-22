@@ -10,7 +10,7 @@ import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.core.context.startKoin
 import org.koin.ksp.generated.module
 
-class MainApp: Application() {
+class TestApp: Application() {
 
     override fun onCreate() {
 
@@ -18,8 +18,8 @@ class MainApp: Application() {
         startKoin {
             fragmentFactory()
             androidLogger()
-            androidContext(this@MainApp)
-            modules(AppModule().module, fragmentModule)
+            androidContext(this@TestApp)
+            modules(AppModule().module, fragmentModule, testModule)
         }
     }
 

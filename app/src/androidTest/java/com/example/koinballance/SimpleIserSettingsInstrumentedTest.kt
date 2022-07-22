@@ -2,7 +2,7 @@ package com.example.koinballance
 
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.example.koinballance.component.SimpleUserSettings
-import com.example.koinballance.mock.MockData
+import com.example.koinballance.component.MockData
 import org.junit.Assert.*
 import org.junit.Test
 import java.util.*

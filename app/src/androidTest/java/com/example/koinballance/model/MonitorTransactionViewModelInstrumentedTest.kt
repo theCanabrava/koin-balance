@@ -10,6 +10,7 @@ import org.junit.Test
 import org.koin.test.KoinTest
 import org.koin.test.inject
 import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.test.assertEquals
 
 class MonitorTransactionViewModelInstrumentedTest: KoinTest
@@ -24,6 +25,7 @@ class MonitorTransactionViewModelInstrumentedTest: KoinTest
         launchActivity<MonitorTransactionActivity>().use { scenario ->
             scenario.onActivity { activity ->
 
+                list.add(10.0, Date())
                 val transaction = list.transactions.value!![0]
                 val formatter = SimpleDateFormat(activity.getString(R.string.date_format))
 

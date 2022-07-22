@@ -15,6 +15,7 @@ import kotlin.test.assertEquals
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.example.koinballance.addtransaction.AddTransactionActivity
 import com.example.koinballance.component.TransactionList
+import java.util.*
 import kotlin.test.assertNotEquals
 
 class AddTransactionActivityInstrumentedTest:KoinTest
@@ -76,7 +77,9 @@ class AddTransactionActivityInstrumentedTest:KoinTest
     @Test
     fun cancelsTransaction()
     {
+        getInstrumentation().runOnMainSync { list.add(1.0, Date()) }
         val expectedValue = 10.0
+
         launchActivity<AddTransactionActivity>().use {
             onView(withId(R.id.transactionValue)).perform(replaceText(expectedValue.toString()))
             onView(withId(R.id.confirmTransaction)).perform(click())

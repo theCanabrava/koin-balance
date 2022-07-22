@@ -1,8 +1,4 @@
-package com.example.koinballance.mock
-
-import com.example.koinballance.component.Settings
-import com.example.koinballance.component.StoredData
-import com.example.koinballance.component.Transaction
+package com.example.koinballance.component
 
 class MockData: StoredData
 {

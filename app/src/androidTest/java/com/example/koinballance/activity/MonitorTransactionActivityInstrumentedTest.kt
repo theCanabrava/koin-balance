@@ -25,7 +25,10 @@ class MonitorTransactionActivityInstrumentedTest: KoinTest
 
     @BeforeTest
     fun monitorTransaction() {
-        getInstrumentation().runOnMainSync { list.monitor(list.transactions.value!![0]) }
+        getInstrumentation().runOnMainSync {
+            list.add(10.0, Date())
+            list.monitor(list.transactions.value!![0])
+        }
     }
 
     @Test

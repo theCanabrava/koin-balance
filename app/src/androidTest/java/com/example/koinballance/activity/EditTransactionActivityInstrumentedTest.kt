@@ -24,10 +24,13 @@ class EditTransactionActivityInstrumentedTest: KoinTest
     private val model: ConfigurationViewModel by inject()
     private val list: TransactionList by inject()
     private val settings: UserSettings by inject()
+    private val defaultTransactionValue = 10.0
 
     @BeforeTest
     fun monitorTransaction() {
-        getInstrumentation().runOnMainSync { list.monitor(list.transactions.value!![0]) }
+        getInstrumentation().runOnMainSync {
+            list.add(defaultTransactionValue, Date())
+            list.monitor(list.transactions.value!![0]) }
     }
 
     @Test
@@ -66,7 +69,7 @@ class EditTransactionActivityInstrumentedTest: KoinTest
     @Test
     fun editsTransaction()
     {
-        val expectedValue = 10.0
+        val expectedValue = 11.0
         val newTransactionValue = 12.34
         getInstrumentation().runOnMainSync {
             list.add(newTransactionValue, Date())
