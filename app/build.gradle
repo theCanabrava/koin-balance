@@ -4,7 +4,7 @@ plugins {
 }
 
 apply plugin: 'com.google.devtools.ksp'
-def keystorePropertiesFile = rootProject.file("keystor.properties")
+def keystorePropertiesFile = rootProject.file("keystore.properties")
 def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
