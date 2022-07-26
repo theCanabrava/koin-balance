@@ -10,6 +10,8 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     compileSdk 32
+    compileSdkVersion 32
+
     buildFeatures {
         viewBinding true
     }
