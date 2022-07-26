@@ -17,7 +17,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: ./gradlew testDebugAndroidTest
+          script: ./gradlew testDebug
 
       - name: run instrumented tests
         uses: reactivecircus/android-emulator-runner@v2
@@ -27,6 +27,6 @@ jobs:
         
       - name: Clean debug generated files
         run: ./gradlew clean
-        
+
       - name: Build Release APK
         run: ./gradlew assembleRelease
