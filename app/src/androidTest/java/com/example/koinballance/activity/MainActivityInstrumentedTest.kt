@@ -27,7 +27,7 @@ class MainActivityInstrumentedTest:KoinTest
     @Test
     fun displaysHeaderText()
     {
-        val expectedName = "Hello ${model.getHeader().name} - BREAK"
+        val expectedName = "Hello ${model.getHeader().name}"
 
         launchActivity<MainActivity>().use {
             onView(withId(R.id.greet)).check(matches(withText(expectedName)))
