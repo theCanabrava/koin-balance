@@ -24,7 +24,7 @@ jobs:
         with:
           api-level: 29
           script: ./gradlew connectedDebugAndroidTest
-      
-    - name: Build Release APK
-      run: ./gradlew clean
-      run: ./gradlew assembleRelease
+        
+      - name: Build Release APK
+        run: ./gradlew clean
+        run: ./gradlew assembleRelease
