@@ -4,10 +4,6 @@ jobs:
   tests:
     runs-on: macos-latest
     steps:
-      - name: Generate keystore access file
-        run: printf "storePassword=${{ secrets.KEYSTORE_PASSWORD }}\nkeyPassword=${{ secrets.KEYSTORE_PASSWORD }}\nkeyAlias=koin-balance\nstoreFile=koin-balance-release-key.jks" > keystor.properties
-      - run: ls
-      - run: cat keystor.properties
       - name: java
         uses: actions/setup-java@v3
         with:
@@ -16,6 +12,11 @@ jobs:
 
       - name: checkout
         uses: actions/checkout@v3
+      
+      - name: Generate keystore access file
+        run: printf "storePassword=${{ secrets.KEYSTORE_PASSWORD }}\nkeyPassword=${{ secrets.KEYSTORE_PASSWORD }}\nkeyAlias=koin-balance\nstoreFile=koin-balance-release-key.jks" > keystor.properties
+      - run: ls
+      - run: cat keystor.properties
 
       - name: run unit tests
         uses: reactivecircus/android-emulator-runner@v2
