@@ -18,7 +18,7 @@ class SharedPrefsDataInstrumentedTest
         val data = getNewSharedPrefs()
         val size = data.loadTransactions(ArrayList()).size
 
-        assertNotEquals(0, size)
+        assertEquals(0, size)
     }
 
     @Test
@@ -29,7 +29,7 @@ class SharedPrefsDataInstrumentedTest
 
         val settings = data.loadSettings(Settings(name, Currency.getInstance("USD")))
 
-        assertNotEquals(name, settings.name)
+        assertEquals(name, settings.name)
 
     }
 }

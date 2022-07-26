@@ -3,7 +3,6 @@ package com.example.koinballance
 import android.app.Application
 import com.example.koinballance.di.AppModule
 import com.example.koinballance.di.fragmentModule
-import com.example.koinballance.di.testModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.fragment.koin.fragmentFactory
