@@ -17,10 +17,7 @@ jobs:
         run: printf "storePassword=${{ secrets.KEYSTORE_PASSWORD }}\nkeyPassword=${{ secrets.KEYSTORE_PASSWORD }}\nkeyAlias=koin-balance\nstoreFile=koin-balance-release-key.jks" > keystore.properties
 
       - name: run unit tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: ./gradlew testDebug
+        run: ./gradlew testDebug
 
       - name: run instrumented tests
         uses: reactivecircus/android-emulator-runner@v2
